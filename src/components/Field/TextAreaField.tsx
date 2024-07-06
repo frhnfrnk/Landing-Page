@@ -22,7 +22,7 @@ const TextArea: React.FC<TextAreaProps> = ({ label, id, value, onChange }) => {
         id={id}
         defaultValue={value}
         onChange={handleChange}
-        className="border-[0.8px] border-gray-900 rounded p-2 resize-none h-[200px]"
+        className="border-[1px] border-input rounded-md p-2 resize-none h-[200px]"
       />
     </div>
   );

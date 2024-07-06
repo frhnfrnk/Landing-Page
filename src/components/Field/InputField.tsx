@@ -27,7 +27,7 @@ const InputField: React.FC<InputFieldProps> = ({
     }
   };
   return (
-    <div className="flex flex-col gap-1 mb-3">
+    <div className="flex flex-col gap-1 mb-3 w-full">
       <label htmlFor={id}>{label}</label>
       <input
         onChange={handleChange}
@@ -38,7 +38,7 @@ const InputField: React.FC<InputFieldProps> = ({
         min={min}
         max={max}
         defaultValue={value}
-        className="border-[0.8px] border-gray-900 rounded p-2 placeholder:text-sm"
+        className="border-[1px] border-input rounded-md p-2 placeholder:text-sm"
       />
     </div>
   );

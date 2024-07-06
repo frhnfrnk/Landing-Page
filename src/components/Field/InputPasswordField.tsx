@@ -36,7 +36,7 @@ const InputPasswordField: React.FC<InputPasswordFieldProps> = ({
           type={showPassword ? "text" : "password"}
           id={id}
           value={value}
-          className="focus:outline-none w-full bg-transparent"
+          className="focus:outline-none w-full bg-transparent "
         />
         <button
           type="button"

@@ -10,9 +10,7 @@ const LoginPage: React.FC = () => {
         ? JSON.parse(localStorage.getItem("user")!)
         : null;
       if (user) {
-        user.role === "creator"
-          ? (window.location.href = "/dashboard")
-          : (window.location.href = "/");
+        window.location.href = "/admin/dashboard";
       }
     }
   }, []);

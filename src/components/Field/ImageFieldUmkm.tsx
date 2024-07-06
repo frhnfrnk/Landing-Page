@@ -58,7 +58,7 @@ const ImageField: React.FC<ImageFieldProps> = ({ label, img, id }) => {
           htmlFor="fileInput"
         >
           <MdOutlineAddPhotoAlternate className="text-neutral-500 text-4xl" />
-          <p className="text-neutral-500 text-[12px] my-1">Add cover</p>
+          <p className="text-neutral-500 text-[12px] my-1">Add image</p>
           <input
             type="file"
             id="fileInput"

@@ -47,6 +47,8 @@ const Header = () => {
   const handleAdd = async () => {
     dispatch(setLoading("loading"));
     let data = { ...umkmData } as any;
+    data.latitude = parseFloat(data.latitude);
+    data.longitude = parseFloat(data.longitude);
     const image = imageData as any;
     let imageUrl = [] as any;
     if (image.length > 0) {
@@ -64,6 +66,7 @@ const Header = () => {
         });
       })
       .catch((err) => {
+        console.log(err);
         toast({
           title: "Error",
           description: err,

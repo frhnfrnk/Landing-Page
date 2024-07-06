@@ -1,12 +1,23 @@
 "use client";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "@/components/ui/toaster";
 import ReduxProvider from "@/lib/store/redux-provider";
+import localFont from "next/font/local";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-poppins",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+
+const sirukota = localFont({
+  src: "/fonts/Sirukota.ttf",
+  variable: "--font-sirukota",
+});
 
 export default function RootLayout({
   children,
@@ -16,7 +27,9 @@ export default function RootLayout({
   return (
     <ReduxProvider>
       <html lang="en">
-        <body className={inter.className}>
+        <body
+          className={`${poppins.variable} ${sirukota.variable} font-poppins`}
+        >
           <NextTopLoader color="#f5dd61" height={5} />
           <main>{children}</main>
           <Toaster />

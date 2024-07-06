@@ -6,6 +6,7 @@ import { FaHome } from "react-icons/fa";
 import { FiMenu } from "react-icons/fi";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import { CiShop } from "react-icons/ci";
+import { IoMdPeople } from "react-icons/io";
 
 interface MenuItemProps {
   title: string;
@@ -55,6 +56,11 @@ const menu = [
     title: "Wisata",
     link: "/admin/wisata",
     children: <BiSolidLandscape className="w-5 h-5" />,
+  },
+  {
+    title: "Budaya",
+    link: "/admin/budaya",
+    children: <IoMdPeople className="w-5 h-5" />,
   },
 ];
 
