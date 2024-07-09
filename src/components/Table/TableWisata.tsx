@@ -25,12 +25,6 @@ const TableData = ({ data }: any) => {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>
-            <input
-              type="checkbox"
-              className="form-checkbox h-5 text-blue-600"
-            />
-          </TableHead>
           <TableHead>Title</TableHead>
           <TableHead>Category</TableHead>
           <TableHead>Address</TableHead>
@@ -40,19 +34,13 @@ const TableData = ({ data }: any) => {
       <TableBody>
         {data.map((item: any) => (
           <TableRow key={item._id}>
-            <TableCell>
-              <input
-                type="checkbox"
-                className="form-checkbox h-5   text-blue-600"
-              />
-            </TableCell>
             <TableCell className="w-1/4">{item.name}</TableCell>
             <TableCell>{item.category}</TableCell>
             <TableCell>{item.address}</TableCell>
             <TableCell>
               <div className="flex gap-2">
-                <SecondaryButton className="text-xs border-[1px]">
-                  <Link href={`/article/edit/${item._id}`}>Edit</Link>
+                <SecondaryButton className="text-xs border-[1px] bg-primary">
+                  <Link href={`/admin/wisata/edit/${item._id}`}>Edit</Link>
                 </SecondaryButton>
                 <ModalDelete data={item} />
               </div>

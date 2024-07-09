@@ -63,7 +63,7 @@ const Navbar = () => {
                 alt="Nirwana Nusapenida"
                 className="w-[48px] h-[48px]"
               />
-              <p className="text-sm md:text-2xl font-sirukota uppercase text-primary">
+              <p className="text-lg md:text-2xl font-sirukota uppercase text-primary">
                 Nirwana Nusapenida
               </p>
             </div>
@@ -110,7 +110,7 @@ const Navbar = () => {
         </div>
         <div
           className={`overflow-hidden transition-all duration-300 ${
-            openMenu ? "w-1/3" : "w-0"
+            openMenu ? "w-[40%]" : "w-0"
           }  bg-white rounded-2xl mt-2 md:hidden`}
         >
           <ul

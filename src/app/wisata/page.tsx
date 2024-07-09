@@ -1,6 +1,4 @@
 import React from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import DummyUMKM from "@/components/Umkm/umkmCard";
 import ImageAbs from "@/components/Umkm/ImageAbs";
 import TabDesa from "@/components/Tab";
 

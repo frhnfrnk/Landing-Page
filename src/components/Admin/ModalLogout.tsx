@@ -29,13 +29,13 @@ const ModalLogout: React.FC = () => {
       });
 
     setTimeout(() => {
-      router.push("/login");
+      router.push("/logintoadmin");
     }, 2000);
   };
   return (
     <>
       <AlertDialog>
-        <AlertDialogTrigger className=" px-2 py-1 text-sm rounded-sm bg-white text-secondary-foreground border-[0.8px] border-primary hover:shadow-btn_sec transition-all">
+        <AlertDialogTrigger className=" px-2 py-1 text-sm rounded-sm bg-[#D7713E] text-secondary-foreground border-[0.8px]  hover:shadow-btn_sec transition-all">
           Logout
         </AlertDialogTrigger>
         <AlertDialogContent>

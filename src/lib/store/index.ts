@@ -5,6 +5,7 @@ import storage from "redux-persist/lib/storage";
 import persistReducer from "redux-persist/es/persistReducer";
 import { umkmReducer } from "../features/umkm/umkmSlice";
 import { wisataReducer } from "../features/wisata/wisataSlice";
+import { budayaReducer } from "../features/budaya/budayaSlice";
 
 const authPersistConfig = {
   key: "auth",
@@ -24,10 +25,17 @@ const wisataPersistConfig = {
   whitelist: ["wisata"],
 };
 
+const budayaPersistConfig = {
+  key: "budaya",
+  storage: storage,
+  whitelist: ["budaya"],
+};
+
 const appReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   umkm: persistReducer(umkmPersistConfig, umkmReducer),
   wisata: persistReducer(wisataPersistConfig, wisataReducer),
+  budaya: persistReducer(budayaPersistConfig, budayaReducer),
 });
 
 const rootReducer = (state: any, action: any) => {

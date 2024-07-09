@@ -4,7 +4,11 @@ import PrimaryButton from "@/components/Button/PrimaryButton";
 import Loading from "@/components/Loading";
 import TableUmkm from "@/components/Table/TableUmkm";
 import { toast } from "@/components/ui/use-toast";
-import { findAllUmkm, setDataUmkm } from "@/lib/features/umkm/umkmSlice";
+import {
+  emtpyDataUmkm,
+  findAllUmkm,
+  setDataUmkm,
+} from "@/lib/features/umkm/umkmSlice";
 
 import { useAppDispatch, useAppSelector } from "@/lib/store";
 import { Umkm } from "@/utils/types/umkm";
@@ -17,12 +21,12 @@ const Header = () => {
   const router = useRouter();
 
   const handleNewUMKM = () => {
-    dispatch(setDataUmkm(null));
+    dispatch(emtpyDataUmkm());
     router.push("/admin/umkm/add");
   };
 
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex justify-between items-center mb-5">
       <h1 className="text-xl font-semibold">UMKM</h1>
       <PrimaryButton onClick={handleNewUMKM}>Tambahkan UMKM</PrimaryButton>
     </div>
@@ -62,25 +66,6 @@ const SearchBar = ({ setQuery, setFilter }: any) => {
   );
 };
 
-const BulkAction = () => {
-  const [value, setValue] = useState("Bulk Action");
-
-  const choose = ["All", "Published", "Draft", "Trash"];
-
-  const handleValue = (value: string) => {
-    setValue(value);
-  };
-
-  return (
-    <div className="w-1/3 flex my-5 gap-2 justify-start items-start">
-      <ButtonDropdown items={choose} setValue={handleValue} title={value} />
-      <PrimaryButton className="flex items-center h-full !border-[1px]">
-        <p>Apply</p>
-      </PrimaryButton>
-    </div>
-  );
-};
-
 const Article: React.FC = () => {
   const dispatch = useAppDispatch();
   const [umkm, setUmkm] = useState([] as Umkm[]);
@@ -102,7 +87,6 @@ const Article: React.FC = () => {
   return (
     <>
       <Header />
-      <BulkAction />
       {status === "loading" ? (
         <Loading />
       ) : umkm ? (

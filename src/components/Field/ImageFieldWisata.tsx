@@ -8,7 +8,7 @@ import { addImage, updateImage } from "@/lib/features/wisata/wisataSlice";
 // Interface untuk props input field
 interface ImageFieldProps {
   label: string;
-  img?: string;
+  img?: any[];
   id: string;
 }
 

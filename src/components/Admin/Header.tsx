@@ -49,16 +49,19 @@ const BreadcrumbComponent = () => {
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
-        {path.map((item, index) => (
-          <React.Fragment key={index}>
-            <BreadcrumbItem>
-              <BreadcrumbLink href={`/${item}`} className="capitalize">
-                {item}
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            {index < path.length - 1 && <BreadcrumbSeparator />}
-          </React.Fragment>
-        ))}
+        {path.map((item, index) => {
+          if (item == "admin") return null;
+          return (
+            <React.Fragment key={index}>
+              <BreadcrumbItem>
+                <BreadcrumbLink href={`/admin/${item}`} className="capitalize">
+                  {item}
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              {index < path.length - 1 && <BreadcrumbSeparator />}
+            </React.Fragment>
+          );
+        })}
       </BreadcrumbList>
     </Breadcrumb>
   );

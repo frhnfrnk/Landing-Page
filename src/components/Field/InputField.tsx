@@ -9,6 +9,7 @@ interface InputFieldProps {
   onChange?: (value: string) => void;
   min?: number;
   max?: number;
+  wajib?: boolean;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -20,6 +21,7 @@ const InputField: React.FC<InputFieldProps> = ({
   placeholder,
   min,
   max,
+  wajib,
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
@@ -28,7 +30,10 @@ const InputField: React.FC<InputFieldProps> = ({
   };
   return (
     <div className="flex flex-col gap-1 mb-3 w-full">
-      <label htmlFor={id}>{label}</label>
+      <label htmlFor={id}>
+        {label}
+        <span className="ml-1 text-sm text-[#ff0000]">{wajib ? "*" : ""}</span>
+      </label>
       <input
         onChange={handleChange}
         placeholder={placeholder}

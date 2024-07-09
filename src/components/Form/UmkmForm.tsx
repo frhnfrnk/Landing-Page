@@ -3,7 +3,7 @@ import React, { use, useEffect, useState } from "react";
 import InputField from "../Field/InputField";
 import ImageField from "../Field/ImageFieldUmkm";
 import SecondaryButton from "../Button/SecondaryButton";
-import { useAppDispatch } from "@/lib/store";
+import { useAppDispatch, useAppSelector } from "@/lib/store";
 import {
   Select,
   SelectContent,
@@ -24,11 +24,12 @@ interface Desa {
   name: string;
 }
 
-const UmkmInfoForm = ({ umkm }: any) => {
+const UmkmInfoForm = () => {
   const dispatch = useAppDispatch();
   const [fetchStatus, setFetchStatus] = useState(false);
   const [listDesa, setListDesa] = useState([] as Desa[]);
   const pathName = usePathname();
+  const umkm = useAppSelector((state) => state.umkm.umkm);
 
   const handleChange = (id: string, value: any) => {
     dispatch(setDataUmkm({ [id]: value }));
@@ -45,28 +46,41 @@ const UmkmInfoForm = ({ umkm }: any) => {
       });
   };
 
+  const handleCategory = (value: string) => {
+    dispatch(setDataUmkm({ category: value }));
+  };
+
+  const handleDesa = (value: string) => {
+    const findId = listDesa.find((desa) => desa.name === value);
+    dispatch(setDataUmkm({ desa: findId?._id }));
+  };
+
   useEffect(() => {
     fetchDesa();
   }, []);
 
   return (
     <div className="w-full font-poppins">
-      <form className="  p-6 border-[0.8px] border-primary rounded-xl flex gap-5">
-        <div className="w-[65%]">
+      <form className="  p-6 border-[0.8px] border-primary rounded-xl flex flex-col lg:flex-row gap-5">
+        <div className="w-full lg:w-[65%]">
           <InputField
             label="Title"
+            wajib
             type="text"
-            value={umkm ? umkm.title : ""}
-            id="title"
-            placeholder="Enter title"
+            value={umkm ? umkm.name : ""}
+            id="name"
+            placeholder="Enter name"
             onChange={(value) => {
-              handleChange("title", value);
+              handleChange("name", value);
             }}
           />
 
           <div className="w-full flex flex-col gap-1 mb-3">
             <label htmlFor="category">Category</label>
-            <Select>
+            <Select
+              onValueChange={handleCategory}
+              defaultValue={umkm ? umkm.category : ""}
+            >
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Category" />
               </SelectTrigger>
@@ -80,7 +94,10 @@ const UmkmInfoForm = ({ umkm }: any) => {
 
           <div className="w-full flex flex-col gap-1 mb-3">
             <label htmlFor="desa">Desa</label>
-            <Select>
+            <Select
+              onValueChange={handleDesa}
+              defaultValue={umkm ? umkm.desa?.name : ""}
+            >
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Desa" />
               </SelectTrigger>
@@ -106,6 +123,7 @@ const UmkmInfoForm = ({ umkm }: any) => {
           <InputField
             label="Alamat Lengkap"
             type="text"
+            wajib
             value={umkm ? umkm.address : ""}
             id="address"
             placeholder="Masukkan alamat lengkap"
@@ -114,10 +132,11 @@ const UmkmInfoForm = ({ umkm }: any) => {
             }}
           />
 
-          <div className="flex gap-5 shrink">
+          <div className="flex flex-col lg:flex-row gap-5 shrink">
             <InputField
               label="Latitude"
               type="text"
+              wajib
               value={umkm ? umkm.latitude : ""}
               id="latitude"
               placeholder="Enter title"
@@ -128,6 +147,7 @@ const UmkmInfoForm = ({ umkm }: any) => {
             <InputField
               label="Longitude"
               type="text"
+              wajib
               value={umkm ? umkm.longitude : ""}
               id="longitude"
               placeholder="Enter title"
@@ -137,7 +157,7 @@ const UmkmInfoForm = ({ umkm }: any) => {
             />
           </div>
 
-          <div className="flex gap-5 shrink">
+          <div className="flex flex-col lg:flex-row gap-5 shrink">
             <InputField
               label="Nomor Telepon"
               type="text"
@@ -159,7 +179,7 @@ const UmkmInfoForm = ({ umkm }: any) => {
               }}
             />
           </div>
-          <div className="flex gap-5">
+          <div className="flex flex-col lg:flex-row gap-5">
             <InputField
               label="Website"
               type="text"
@@ -192,7 +212,7 @@ const UmkmInfoForm = ({ umkm }: any) => {
             />
           </div>
         </div>
-        <div className="w-[35%] p-6">
+        <div className="w-full lg:w-[35%] p-0 lg:p-6">
           <ImageField label="Image Cover" id="cover" img={umkm?.image} />
         </div>
       </form>

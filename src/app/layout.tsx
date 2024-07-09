@@ -27,9 +27,7 @@ export default function RootLayout({
   return (
     <ReduxProvider>
       <html lang="en">
-        <body
-          className={`${poppins.variable} ${sirukota.variable} font-poppins`}
-        >
+        <body className={`${poppins.variable} ${sirukota.variable} `}>
           <NextTopLoader color="#f5dd61" height={5} />
           <main>{children}</main>
           <Toaster />

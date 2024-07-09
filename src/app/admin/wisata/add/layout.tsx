@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Add UMKM - Nirwana Nusa Penida",
-  description: "Add UMKM to Nirwana Nusa Penida",
+  title: "Add Wisata - Nirwana Nusa Penida",
+  description: "Add Wisata to Nirwana Nusa Penida",
 };
 
 export default function WisataLayout({

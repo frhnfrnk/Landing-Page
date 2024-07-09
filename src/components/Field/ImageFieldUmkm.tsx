@@ -4,12 +4,12 @@ import { MdOutlineAddPhotoAlternate } from "react-icons/md";
 import { useAppDispatch } from "@/lib/store";
 
 import axios from "axios";
-import { addImage, updateImage } from "@/lib/features/umkm/umkmSlice";
+import { addImage, updateImage } from "@/lib/features/wisata/wisataSlice";
 
 // Interface untuk props input field
 interface ImageFieldProps {
   label: string;
-  img?: string;
+  img?: any[];
   id: string;
 }
 

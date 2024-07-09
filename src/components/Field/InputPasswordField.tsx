@@ -29,7 +29,7 @@ const InputPasswordField: React.FC<InputPasswordFieldProps> = ({
   return (
     <div className="flex flex-col gap-1 mb-3">
       <label htmlFor={id}>{label}</label>
-      <div className="relative border-[0.8px] border-gray-900 rounded p-2">
+      <div className="relative border-[0.8px] border-input rounded p-2">
         <input
           onChange={handleChange}
           autoComplete="on"

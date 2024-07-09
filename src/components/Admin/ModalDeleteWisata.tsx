@@ -26,7 +26,7 @@ const ModalDelete: React.FC<ModalDeleteProps> = ({ data }) => {
       .then((res) => {
         toast({
           title: "Success",
-          description: "Article has been deleted",
+          description: "Wisata has been deleted",
         });
         setTimeout(() => {
           window.location.reload();
@@ -45,7 +45,7 @@ const ModalDelete: React.FC<ModalDeleteProps> = ({ data }) => {
     <>
       <AlertDialog>
         <AlertDialogTrigger>
-          <SecondaryButton>Delete</SecondaryButton>
+          <SecondaryButton className="bg-[#D7713E]">Delete</SecondaryButton>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>

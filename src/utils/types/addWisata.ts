@@ -5,5 +5,6 @@ export interface AddWisata {
   address: string;
   latitude: number;
   longitude: number;
+  desa: string;
   image: string[];
 }

@@ -2,8 +2,9 @@ import Navbar from "@/components/LandingPage/Navbar";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "UMKM - Nirwana Nusa Penida",
-  description: "A list of UMKM in Nirwana Nusa Penida",
+  title: "Wisata - Nirwana Nusa Penida",
+  description:
+    "Discover the breathtaking tourist destinations in Nirwana Nusa Penida. Explore beautiful beaches, majestic mountains, and other stunning locations that make Nusa Penida a paradise for travelers.",
 };
 
 export default function UmkmLayout({

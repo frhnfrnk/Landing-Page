@@ -7,7 +7,7 @@ const UMKM = () => {
     <div
       className=" w-full bg-[#F5EBE7] min-h-screen relative"
       style={{
-        backgroundImage: "url('/Images/wisatabg.svg')",
+        backgroundImage: "url('/Images/budaya.svg')",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}

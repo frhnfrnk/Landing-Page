@@ -1,12 +1,17 @@
 "use client";
 import PrimaryButton from "@/components/Button/PrimaryButton";
 import UmkmInfoForm from "@/components/Form/UmkmForm";
+import WisataInfoForm from "@/components/Form/WisataForm";
 import Loading from "@/components/Loading";
 import { toast } from "@/components/ui/use-toast";
-import { addUmkm } from "@/lib/features/umkm/umkmSlice";
-import { emtpyDatawisata, setLoading } from "@/lib/features/wisata/wisataSlice";
+import axiosInstance from "@/lib/axios";
+import { logout } from "@/lib/features/auth/authSlice";
+import {
+  addWisata,
+  emtpyDatawisata,
+  setLoading,
+} from "@/lib/features/wisata/wisataSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/store";
-import axios from "axios";
 import React, { useEffect } from "react";
 
 const Header = () => {
@@ -24,13 +29,17 @@ const Header = () => {
             return;
           }
           try {
-            const response = await axios.post(
+            const response = await axiosInstance.post(
               `https://backend-nirwana.vercel.app/cloudinary/upload`,
               imgFile
             );
+
             url.push(response.data);
-          } catch (error) {
-            console.log(error);
+          } catch (error: any) {
+            if (error.response.data.message == "Unauthorized") {
+              dispatch(logout());
+              return;
+            }
           }
         })
       );
@@ -43,26 +52,34 @@ const Header = () => {
   const handleAdd = async () => {
     dispatch(setLoading("loading"));
     let data = { ...wisataData } as any;
+    data.latitude = parseFloat(data.latitude);
+    data.longitude = parseFloat(data.longitude);
     const image = imageData as any;
     let imageUrl = [] as any;
     if (image.length > 0) {
       imageUrl = await uploadImage(image);
       data = { ...data, image: imageUrl };
+      console.log(data);
     }
-    dispatch(addUmkm(data))
+    dispatch(addWisata(data))
       .unwrap()
       .then((res) => {
         dispatch(emtpyDatawisata());
         toast({
           title: "Success",
-          description: "Umkm has been saved",
+          description: "Wisata has been saved",
           variant: "default",
         });
       })
       .catch((err) => {
+        console.log(err);
+        if (err.response.data.message == "Unauthorized") {
+          dispatch(logout());
+          return;
+        }
         toast({
           title: "Error",
-          description: err,
+          description: err.response.data.message,
           variant: "destructive",
         });
       });
@@ -94,7 +111,7 @@ const Create = () => {
         <>
           <Header />
           <div className="flex flex-col lg:flex-row gap-4">
-            <UmkmInfoForm />
+            <WisataInfoForm />
           </div>
         </>
       )}

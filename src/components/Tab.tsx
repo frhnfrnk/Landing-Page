@@ -1,22 +1,26 @@
 "use client";
 import { useEffect, useState } from "react";
-import DummyUMKM from "./Umkm/umkmCard";
 import { usePathname } from "next/navigation";
 import { useAppDispatch } from "@/lib/store";
 import { findAllUmkm } from "@/lib/features/umkm/umkmSlice";
-import { findAllWisata } from "@/lib/features/wisata/wisataSlice";
-import DataCard from "./Umkm/umkmCard";
+import { findAllWisata, setLoading } from "@/lib/features/wisata/wisataSlice";
 import axios from "axios";
+import { Umkm } from "@/utils/types/umkm";
+import Loading from "./Loading";
+import DataCard from "./Umkm/Datacard";
+import { findAllBudaya } from "@/lib/features/budaya/budayaSlice";
 
-interface Desa {
+export interface Desa {
   _id: number;
   name: string;
 }
 
 export default function TabDesa() {
   const [activeTab, setActiveTab] = useState("Sakti");
-  const [list, setList] = useState([]);
+  const [list, setList] = useState<Umkm[]>([]);
   const [listDesa, setListDesa] = useState<Desa[]>([]);
+  const [filteredData, setFilteredData] = useState<Umkm[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const pathName = usePathname();
   const dispatch = useAppDispatch();
   const pageNow = pathName.split("/").pop();
@@ -33,33 +37,43 @@ export default function TabDesa() {
   };
 
   const fetchList = async () => {
-    if (pageNow === "umkm") {
-      await dispatch(findAllUmkm())
-        .unwrap()
-        .then((res) => {
-          setList(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else if (pageNow === "wisata") {
-      await dispatch(findAllWisata())
-        .unwrap()
-        .then((res) => {
-          setList(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else if (pageNow === "budaya") {
-      // fetch all
+    setIsLoading(true);
+    try {
+      let res;
+      if (pageNow === "umkm") {
+        res = await dispatch(findAllUmkm()).unwrap();
+      } else if (pageNow === "wisata") {
+        res = await dispatch(findAllWisata()).unwrap();
+      } else if (pageNow === "budaya") {
+        res = await dispatch(findAllBudaya()).unwrap();
+      }
+      setList(res);
+      const filteredData = res.filter((data: Umkm) =>
+        data.desa.name.includes(activeTab)
+      );
+      setFilteredData(filteredData);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   useEffect(() => {
     fetchDesa();
     fetchList();
-  }, []);
+  }, [pageNow]);
+
+  useEffect(() => {
+    const filteredData = list.filter((data: Umkm) =>
+      data.desa.name.includes(activeTab)
+    );
+    setFilteredData(filteredData);
+  }, [activeTab, list]);
+
+  const handleToggle = (name: string) => {
+    setActiveTab(name);
+  };
 
   return (
     <div className="container mx-auto p-4 font-poppins">
@@ -72,31 +86,55 @@ export default function TabDesa() {
                 ? "bg-[#D7713E] text-white"
                 : "bg-gray-200 text-gray-500"
             }`}
-            onClick={() => setActiveTab(data.name)}
+            onClick={() => handleToggle(data.name)}
           >
             Desa {data.name}
           </button>
         ))}
       </div>
-      <div className="p-4 ">
-        {activeTab === "Desa Sakti" ? (
-          <div className="flex gap-5 flex-col">
-            {list.map((data, index) => (
-              <div key={index}>
-                <DataCard data={data} />
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="flex gap-5 flex-col">
-            {list.map((data, index) => (
-              <div key={index}>
-                <DataCard data={data} />
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
+      {isLoading ? (
+        <div className="flex justify-center items-center w-full h-96">
+          <Loading />
+        </div>
+      ) : (
+        <div className="p-4 ">
+          {activeTab === "Desa Sakti" ? (
+            <div className="flex gap-5 flex-col">
+              {filteredData.length != 0 ? (
+                filteredData.map((data, index) => (
+                  <div
+                    key={index}
+                    className="w-full flex items-center justify-center"
+                  >
+                    <DataCard data={data} pageNow={pageNow} />
+                  </div>
+                ))
+              ) : (
+                <div className="w-full flex items-center justify-center">
+                  <p>Tidak ada data</p>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="flex gap-5 flex-col">
+              {filteredData.length != 0 ? (
+                filteredData.map((data, index) => (
+                  <div
+                    key={index}
+                    className="w-full flex items-center justify-center"
+                  >
+                    <DataCard data={data} pageNow={pageNow} />
+                  </div>
+                ))
+              ) : (
+                <div className="w-full flex items-center justify-center">
+                  <p>Tidak ada data</p>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

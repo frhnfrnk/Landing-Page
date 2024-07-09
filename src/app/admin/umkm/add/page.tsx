@@ -1,16 +1,16 @@
 "use client";
 import PrimaryButton from "@/components/Button/PrimaryButton";
-import SecondaryButton from "@/components/Button/SecondaryButton";
 import UmkmInfoForm from "@/components/Form/UmkmForm";
 import Loading from "@/components/Loading";
 import { toast } from "@/components/ui/use-toast";
+import axiosInstance from "@/lib/axios";
+import { logout } from "@/lib/features/auth/authSlice";
 import {
   addUmkm,
   emtpyDataUmkm,
   setLoading,
 } from "@/lib/features/umkm/umkmSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/store";
-import axios from "axios";
 import React, { useEffect } from "react";
 
 const Header = () => {
@@ -28,13 +28,17 @@ const Header = () => {
             return;
           }
           try {
-            const response = await axios.post(
+            const response = await axiosInstance.post(
               `https://backend-nirwana.vercel.app/cloudinary/upload`,
               imgFile
             );
+
             url.push(response.data);
-          } catch (error) {
-            console.log(error);
+          } catch (error: any) {
+            if (error.response.data.message == "Unauthorized") {
+              dispatch(logout());
+              return;
+            }
           }
         })
       );
@@ -67,9 +71,13 @@ const Header = () => {
       })
       .catch((err) => {
         console.log(err);
+        if (err.response.data.message == "Unauthorized") {
+          dispatch(logout());
+          return;
+        }
         toast({
           title: "Error",
-          description: err,
+          description: err.response.data.message,
           variant: "destructive",
         });
       });
