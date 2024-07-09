@@ -1,3 +1,4 @@
+import ButtonToTop from "@/components/Button/ButtonToTop";
 import Footer from "@/components/LandingPage/Footer";
 import Hero from "@/components/LandingPage/Hero";
 import Lokasi from "@/components/LandingPage/Lokasi";
@@ -20,6 +21,7 @@ export default function Home() {
         <Maskot />
         <Lokasi />
         <Footer />
+        <ButtonToTop />
       </div>
     </main>
   );

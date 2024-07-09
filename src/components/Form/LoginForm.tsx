@@ -81,7 +81,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ isModal = false, children }) => {
         />
       </div>
       <p className="text-center text-sm mt-3">
-        Don't have an account? {children}
+        Don&apos;t have an account? {children}
       </p>
 
       <Toaster />

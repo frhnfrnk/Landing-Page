@@ -1,3 +1,4 @@
+import ButtonToTop from "@/components/Button/ButtonToTop";
 import Navbar from "@/components/LandingPage/Navbar";
 import type { Metadata } from "next";
 
@@ -17,6 +18,7 @@ export default function UmkmLayout({
       <main>
         <Navbar />
         {children}
+        <ButtonToTop />
       </main>
     </>
   );

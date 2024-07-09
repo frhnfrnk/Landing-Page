@@ -6,6 +6,7 @@ import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "@/components/ui/toaster";
 import ReduxProvider from "@/lib/store/redux-provider";
 import localFont from "next/font/local";
+import Head from "next/head";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -27,6 +28,9 @@ export default function RootLayout({
   return (
     <ReduxProvider>
       <html lang="en">
+        <Head>
+          <link rel="shortcut icon" href="/favicon.ico" />
+        </Head>
         <body className={`${poppins.variable} ${sirukota.variable} `}>
           <NextTopLoader color="#f5dd61" height={5} />
           <main>{children}</main>
