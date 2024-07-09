@@ -4,8 +4,6 @@ import { User } from "@/utils/types/user";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import SecondaryButton from "../Button/SecondaryButton";
-import PrimaryButton from "../Button/PrimaryButton";
 
 const Navbar = () => {
   const router = useRouter();
@@ -63,7 +61,7 @@ const Navbar = () => {
                 alt="Nirwana Nusapenida"
                 className="w-[48px] h-[48px]"
               />
-              <p className="text-lg md:text-2xl font-sirukota uppercase text-primary">
+              <p className="text-lg lg:text-2xl font-sirukota uppercase text-primary">
                 Nirwana Nusapenida
               </p>
             </div>

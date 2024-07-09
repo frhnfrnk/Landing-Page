@@ -40,7 +40,7 @@ const ButtonToTop = () => {
           exit="hidden"
           variants={variants}
           type="button"
-          className="fixed bottom-4 right-4 bg-primary text-white rounded-full p-3 shadow-lg"
+          className="z-[1000] fixed bottom-4 right-4 bg-primary text-white rounded-full p-3 shadow-lg"
           onClick={handleButtonClick}
         >
           <svg
