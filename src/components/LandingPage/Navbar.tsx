@@ -61,7 +61,7 @@ const Navbar = () => {
                 alt="Nirwana Nusapenida"
                 className="w-[48px] h-[48px]"
               />
-              <p className="text-lg lg:text-2xl font-sirukota uppercase text-primary">
+              <p className="text-base lg:text-2xl font-sirukota uppercase text-primary">
                 Nirwana Nusapenida
               </p>
             </div>

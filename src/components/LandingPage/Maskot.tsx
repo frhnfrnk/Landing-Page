@@ -32,7 +32,7 @@ const Maskot = () => {
         <img
           src="/Images/maskot.svg"
           alt="Maskot"
-          className="w-full lg:w-1/3 object-contain"
+          className="w-full md:w-1/2 lg:w-1/3 object-contain"
         />
         <div className="flex flex-col items-end">
           <p

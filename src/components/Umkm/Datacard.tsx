@@ -10,7 +10,7 @@ const DataCard = ({ data, pageNow }: any) => {
   return (
     <div
       onClick={goToDetail}
-      className="relative z-10 w-full md:w-[50%] flex flex-col md:flex-row items-center justify-center bg-white rounded-md h-auto md:h-72 shadow-[0_3px_10px_rgb(0,0,0,0.2)] hover:shadow-lg transition-all duration-300 transform hover:scale-105 overflow-hidden cursor-pointer"
+      className="relative z-10 w-full md:w-[50%] flex flex-col-reverse md:flex-row items-center justify-center bg-white rounded-md h-auto md:h-72 shadow-[0_3px_10px_rgb(0,0,0,0.2)] hover:shadow-lg transition-all duration-300 transform hover:scale-105 overflow-hidden cursor-pointer"
     >
       <div className="w-full md:w-[60%] h-full flex flex-col justify-between p-5">
         <div>

@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="z-[100] flex flex-col items-center justify-center bg-primary w-full h-[50vh] lg:h-[70vh]">
+    <div className="z-[100] flex flex-col items-center justify-center bg-primary w-full h-[60vh] lg:h-[70vh]">
       <div className="w-full flex items-center justify-center gap-5">
         <img
           src="/Logo/Footer.png"
