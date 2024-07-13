@@ -98,7 +98,23 @@ export default function TabDesa() {
         </div>
       ) : (
         <div className="p-4 ">
-          {activeTab === "Desa Sakti" ? (
+          <div className="flex gap-5 flex-col">
+            {filteredData.length != 0 ? (
+              filteredData.map((data, index) => (
+                <div
+                  key={index}
+                  className="w-full flex items-center justify-center"
+                >
+                  <DataCard data={data} pageNow={pageNow} index={index} />
+                </div>
+              ))
+            ) : (
+              <div className="w-full flex items-center justify-center">
+                <p>Tidak ada data</p>
+              </div>
+            )}
+          </div>
+          {/* {activeTab === "Desa Sakti" ? (
             <div className="flex gap-5 flex-col">
               {filteredData.length != 0 ? (
                 filteredData.map((data, index) => (
@@ -106,7 +122,7 @@ export default function TabDesa() {
                     key={index}
                     className="w-full flex items-center justify-center"
                   >
-                    <DataCard data={data} pageNow={pageNow} />
+                    <DataCard data={data} pageNow={pageNow} index={index} />
                   </div>
                 ))
               ) : (
@@ -123,7 +139,7 @@ export default function TabDesa() {
                     key={index}
                     className="w-full flex items-center justify-center"
                   >
-                    <DataCard data={data} pageNow={pageNow} />
+                    <DataCard data={data} pageNow={pageNow} index={index} />
                   </div>
                 ))
               ) : (
@@ -132,7 +148,7 @@ export default function TabDesa() {
                 </div>
               )}
             </div>
-          )}
+          )} */}
         </div>
       )}
     </div>
