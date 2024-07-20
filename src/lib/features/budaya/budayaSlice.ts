@@ -101,6 +101,12 @@ export const budayaSlice = createSlice({
         state.image[index] = newValue;
       }
     },
+    deleteImage: (state, action) => {
+      const index = action.payload;
+      if (state.image !== null) {
+        state.image.splice(index, 1);
+      }
+    },
     setLoading: (state, action) => {
       state.status = action.payload;
     },
@@ -159,5 +165,6 @@ export const {
   updateImage,
   setLoading,
   setFetchImage,
+  deleteImage,
 } = budayaSlice.actions;
 export const budayaReducer = budayaSlice.reducer;

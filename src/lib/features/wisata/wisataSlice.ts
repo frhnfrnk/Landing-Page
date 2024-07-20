@@ -104,6 +104,12 @@ export const wisataSlice = createSlice({
     setLoading: (state, action) => {
       state.status = action.payload;
     },
+    deleteImage: (state, action) => {
+      const index = action.payload;
+      if (state.image !== null) {
+        state.image.splice(index, 1);
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(addWisata.pending, (state) => {
@@ -159,5 +165,6 @@ export const {
   updateImage,
   setLoading,
   setFetchImage,
+  deleteImage,
 } = wisataSlice.actions;
 export const wisataReducer = wisataSlice.reducer;

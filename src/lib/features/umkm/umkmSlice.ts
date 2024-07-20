@@ -104,6 +104,12 @@ export const umkmSlice = createSlice({
     setLoading: (state, action) => {
       state.status = action.payload;
     },
+    deleteImage: (state, action) => {
+      const index = action.payload;
+      if (state.image !== null) {
+        state.image.splice(index, 1);
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(addUmkm.pending, (state) => {
@@ -159,5 +165,6 @@ export const {
   updateImage,
   setLoading,
   setFetchImage,
+  deleteImage,
 } = umkmSlice.actions;
 export const umkmReducer = umkmSlice.reducer;

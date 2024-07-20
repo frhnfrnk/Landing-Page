@@ -1,9 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { MdOutlineAddPhotoAlternate } from "react-icons/md";
+import { MdDelete, MdOutlineAddPhotoAlternate } from "react-icons/md";
 import { useAppDispatch } from "@/lib/store";
 
-import { addImage, updateImage } from "@/lib/features/wisata/wisataSlice";
+import {
+  addImage,
+  deleteImage,
+  updateImage,
+} from "@/lib/features/wisata/wisataSlice";
 
 // Interface untuk props input field
 interface ImageFieldProps {
@@ -49,6 +53,13 @@ const ImageField: React.FC<ImageFieldProps> = ({ label, img, id }) => {
     }
   };
 
+  const handleDeleteImage = (index: number) => {
+    dispatch(deleteImage(index));
+    const newImage = [...image];
+    newImage.splice(index, 1);
+    setImage(newImage);
+  };
+
   return (
     <div className="flex flex-col gap-1 mb-3 ">
       {image.length == 0 ? (
@@ -71,23 +82,33 @@ const ImageField: React.FC<ImageFieldProps> = ({ label, img, id }) => {
         <>
           <div className="w-full gap-2 flex flex-col mb-12 ">
             {image.map((img: any, index: number) => (
-              <div className="relative" key={index}>
-                <div className="flex justify-center flex-col items-center w-full aspect-square rounded-xl">
-                  <img src={img} alt="" className="rounded-xl" />
+              <div className="group relative flex flex-col w-[500px] rounded-xl gap-2 mb-5">
+                <img src={img} alt="" className="rounded-xl w-[500px]" />
+                <div className="w-[500px] h-full flex items-center justify-center absolute top-0 left-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 rounded-xl transition-opacity duration-300 "></div>
+                <div className="absolute w-[500px] h-full flex items-center justify-center">
                   <label
-                    className="absolute bg-pink-700 text-neutral-100 rounded-xl px-2 py-1 text-sm my-2 opacity-0 transition-opacity duration-300"
+                    className="opacity-0 group-hover:opacity-100  text-black rounded-xl px-2 py-1 text-sm my-2 transition-opacity duration-300 cursor-pointer "
                     htmlFor={`fileInput${index}`}
                   >
-                    Change photo
+                    <p className="bg-[#D7713E] hover:bg-[#ac5a32] p-3 rounded-full text-white font-poppins">
+                      Change photo
+                    </p>
+                    <input
+                      type="file"
+                      id={`fileInput${index}`}
+                      accept="image/*"
+                      className="hidden "
+                      onChange={(e) => handleChangeImage(e, index)}
+                      onBlur={handleFileInputBlur}
+                    />
                   </label>
-                  <input
-                    type="file"
-                    id={`fileInput${index}`}
-                    accept="image/*"
-                    className="hidden"
-                    onChange={(e) => handleChangeImage(e, index)}
-                    onBlur={handleFileInputBlur}
-                  />
+                  <div
+                    className="flex items-center bg-[#D7713E] hover:bg-[#ac5a32] trasitio px-5 py-3 rounded-full opacity-0 group-hover:opacity-100 text-black text-sm my-2 transition-all duration-300 cursor-pointer"
+                    onClick={() => handleDeleteImage(index)}
+                  >
+                    <p className="text-white font-poppins">Delete</p>
+                    <MdDelete className="text-white text-2xl" />
+                  </div>
                 </div>
               </div>
             ))}

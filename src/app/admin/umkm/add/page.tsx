@@ -35,6 +35,7 @@ const Header = () => {
 
             url.push(response.data);
           } catch (error: any) {
+            console.log(error);
             if (error.response.data.message == "Unauthorized") {
               dispatch(logout());
               return;
@@ -59,6 +60,7 @@ const Header = () => {
       imageUrl = await uploadImage(image);
       data = { ...data, image: imageUrl };
     }
+    console.log(data);
     dispatch(addUmkm(data))
       .unwrap()
       .then((res) => {
