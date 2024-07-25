@@ -7,7 +7,7 @@ import MapGL, {
   MapRef,
 } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import classes from "@/app/Page.module.css";
+import classes from "@/app/styles/Minimap.module.css";
 import { useEffect, useRef, useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import Link from "next/link";
