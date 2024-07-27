@@ -1,5 +1,6 @@
+"use client";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const DataCard = ({ data, pageNow, index }: any) => {
@@ -31,7 +32,7 @@ const DataCard = ({ data, pageNow, index }: any) => {
             <p className="text-sm font-poppins mt-2">{data.address}</p>
           </div>
           <p className="text-sm font-poppins mt-4 text-justify">
-            {data.description}
+            <Description description={data.description} />
           </p>
         </div>
         <div className="w-full md:w-[40%] h-48 md:h-full flex items-center justify-center p-5 md:p-2">
@@ -47,3 +48,44 @@ const DataCard = ({ data, pageNow, index }: any) => {
 };
 
 export default DataCard;
+
+interface DescriptionProps {
+  description: string;
+}
+
+const Description: React.FC<DescriptionProps> = ({ description }) => {
+  const [readMore, setReadMore] = useState<boolean>(false);
+  function truncateText(text: string, maxLength: number) {
+    if (text.length <= maxLength) {
+      return text;
+    }
+    var truncatedText = text.slice(0, maxLength);
+    truncatedText = truncatedText.slice(
+      0,
+      Math.min(truncatedText.length, truncatedText.lastIndexOf(" "))
+    );
+    return truncatedText + "...";
+  }
+
+  useEffect(() => {
+    if (description) {
+      if (description.length > 200) {
+        setReadMore(true);
+      }
+    }
+  }, [description]);
+
+  return (
+    <div>
+      <p className="text-justify">
+        {readMore ? truncateText(description, 200) : description}
+        <button
+          onClick={() => setReadMore(false)}
+          className="ml-2 text-primary font-semibold cursor-pointer transition-all ease-out duration-500 hover:text-[#000000]"
+        >
+          Read More
+        </button>
+      </p>
+    </div>
+  );
+};
