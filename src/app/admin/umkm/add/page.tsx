@@ -49,6 +49,14 @@ const Header = () => {
     return url;
   };
 
+  const removeEmptyValues = (obj: any) => {
+    for (const key in obj) {
+      if (obj[key] === null || obj[key] === undefined || obj[key] === "") {
+        delete obj[key];
+      }
+    }
+  };
+
   const handleAdd = async () => {
     dispatch(setLoading("loading"));
     let data = { ...umkmData } as any;
@@ -60,7 +68,7 @@ const Header = () => {
       imageUrl = await uploadImage(image);
       data = { ...data, image: imageUrl };
     }
-    console.log(data);
+    removeEmptyValues(data);
     dispatch(addUmkm(data))
       .unwrap()
       .then((res) => {
