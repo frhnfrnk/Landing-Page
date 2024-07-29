@@ -37,7 +37,7 @@ function Map({ coordinate }: any) {
           zoom: 15,
         }}
         maxZoom={20}
-        minZoom={3}
+        minZoom={11}
       >
         <GeolocateControl position="top-left" />
         <NavigationControl position="top-left" />

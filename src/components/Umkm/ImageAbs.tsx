@@ -22,12 +22,12 @@ const ImageAbs = () => {
       <img
         src="/Images/Side Right.png"
         alt="Side"
-        className="w-[100px] lg:w-[300px] object-contain absolute top-[15vh] lg:top-[40vh] right-[10px] lg:right-[20px]"
+        className="w-[100px] lg:w-[300px] object-contain absolute top-[20vh] lg:top-[40vh] right-[10px] lg:right-[20px]"
       />
       <img
         src="/Images/Side.png"
         alt="Side"
-        className="w-[100px] lg:w-[300px] object-contain absolute top-[15vh] lg:top-[40vh] left-[10px] lg:left-[20px]"
+        className="w-[100px] lg:w-[300px] object-contain absolute top-[20vh] lg:top-[40vh] left-[10px] lg:left-[20px]"
       />
     </div>
   );

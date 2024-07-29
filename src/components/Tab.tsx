@@ -9,6 +9,13 @@ import { Umkm } from "@/utils/types/umkm";
 import Loading from "./Loading";
 import DataCard from "./Umkm/Datacard";
 import { findAllBudaya } from "@/lib/features/budaya/budayaSlice";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 export interface Desa {
   _id: number;
@@ -16,7 +23,7 @@ export interface Desa {
 }
 
 export default function TabDesa() {
-  const [activeTab, setActiveTab] = useState("Sakti");
+  const [activeTab, setActiveTab] = useState("Semua Desa");
   const [list, setList] = useState<Umkm[]>([]);
   const [listDesa, setListDesa] = useState<Desa[]>([]);
   const [filteredData, setFilteredData] = useState<Umkm[]>([]);
@@ -65,6 +72,10 @@ export default function TabDesa() {
   }, [pageNow]);
 
   useEffect(() => {
+    if (activeTab === "Semua Desa") {
+      setFilteredData(list);
+      return;
+    }
     const filteredData = list.filter((data: Umkm) =>
       data.desa.name.includes(activeTab)
     );
@@ -72,12 +83,26 @@ export default function TabDesa() {
   }, [activeTab, list]);
 
   const handleToggle = (name: string) => {
-    setActiveTab(name);
+    if (name === "Semua Desa") {
+      setFilteredData(list);
+    } else {
+      setActiveTab(name);
+    }
   };
 
   return (
     <div className="container mx-auto p-4 font-poppins">
-      <div className="flex justify-center mb-4">
+      <div className="hidden md:flex justify-center mb-4">
+        <button
+          className={`px-4 py-2 mx-2 rounded ${
+            activeTab === "Semua Desa"
+              ? "bg-[#D7713E] text-white"
+              : "bg-gray-200 text-gray-500"
+          }`}
+          onClick={() => handleToggle("Semua Desa")}
+        >
+          Semua Desa
+        </button>
         {listDesa.map((data, index) => (
           <button
             key={index}
@@ -92,6 +117,30 @@ export default function TabDesa() {
           </button>
         ))}
       </div>
+      <Select
+        onValueChange={(value) => {
+          setActiveTab(value);
+        }}
+      >
+        <SelectTrigger
+          className="w-1/2 lg:hidden flex mx-auto mb-4
+          "
+        >
+          <SelectValue placeholder="Semua Desa" />
+        </SelectTrigger>
+        <SelectContent>
+          {listDesa.map((data, index) => (
+            <SelectItem
+              key={index}
+              value={data.name}
+              className=" text-center
+            "
+            >
+              Desa {data.name}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
       {isLoading ? (
         <div className="flex justify-center items-center w-full h-96">
           <Loading />

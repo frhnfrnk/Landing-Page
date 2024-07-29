@@ -7,6 +7,7 @@ import ImageAbsDetail from "@/components/Umkm/ImageAbsDetail";
 import { findOneUmkm } from "@/lib/features/umkm/umkmSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/store";
 import { Umkm } from "@/utils/types/umkm";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
@@ -59,29 +60,65 @@ const DetailUMKM = () => {
         <div className="font-poppins w-full lg:w-1/2 mx-auto -translate-y-0 lg:-translate-y-[50px] mt-10 lg:mt-0 px-5">
           <CarouselComponent img={umkmData.image} />
           <div className="lg:w-full flex flex-col justify-center items-center">
-            <h1 className="text-4xl font-bold mt-5 mb-3">{umkmData.name}</h1>
+            <h1 className="text-4xl font-bold mt-5 mb-3 text-center lg:text-left">
+              {umkmData.name}
+            </h1>
             <p className="text-xl">{umkmData.category}</p>
-            <p className="mt-5">{umkmData.address}</p>
+            <p className="mt-5 text-center lg:text-left">{umkmData.address}</p>
             <p className="mt-8 text-justify indent-10">
               {umkmData.description}
             </p>
-            <div className="w-full">
-              <p className="mt-5">
-                Telepon : {umkmData.phoneNumber ? umkmData.phoneNumber : "-"}
-              </p>
-              <p className="">
-                Website : {umkmData.website ? umkmData.website : "-"}
-              </p>
-              <p className="">
-                Facebook : {umkmData.facebook ? umkmData.facebook : "-"}
-              </p>
-              <p className="">
-                Instagram : {umkmData.instagram ? umkmData.instagram : "-"}
-              </p>
+            <div className="w-full flex flex-col">
+              <Link
+                href={umkmData.email ? `mailto:${umkmData.email}` : "#"}
+                className="mt-5"
+              >
+                Email :{" "}
+                <span className="text-blue-500 underline">
+                  {umkmData.email ? umkmData.email : "-"}
+                </span>
+              </Link>
+              <Link
+                href={
+                  umkmData.phoneNumber ? `tel:${umkmData.phoneNumber}` : "#"
+                }
+                className=""
+              >
+                Telepon :
+                <span className="text-blue-500 underline">
+                  {umkmData.phoneNumber ? umkmData.phoneNumber : "-"}
+                </span>
+              </Link>
+              <Link
+                href={umkmData.website ? umkmData.website : "#"}
+                className=""
+              >
+                Website :{" "}
+                <span className="text-blue-500 underline">
+                  {umkmData.website ? umkmData.website : "-"}
+                </span>
+              </Link>
+              <Link
+                href={`https://facebook.com/${umkmData.facebook}`}
+                className=""
+              >
+                Facebook :
+                <span>{umkmData.facebook ? umkmData.facebook : " -"}</span>
+              </Link>
+              <Link
+                href={`https://www.instagram.com/${umkmData.instagram}`}
+                className="
+                "
+              >
+                Instagram :{" "}
+                <span className="text-blue-500 underline">
+                  @{umkmData.instagram ? umkmData.instagram : "-"}
+                </span>
+              </Link>
 
               <p className=" mt-5 mb-2 font-bold">Lokasi : </p>
               {umkmData.latitude ? (
-                <div className="w-full h-[50vh] p-3 rounded bg-primary">
+                <div className="w-full h-[50vh] p-3 rounded bg-primary mb-16">
                   <MapComponent data={umkmData} />
                 </div>
               ) : (
