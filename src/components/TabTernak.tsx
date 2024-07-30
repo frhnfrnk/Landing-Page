@@ -18,9 +18,11 @@ export default function TabTernak() {
   const fetchList = async () => {
     setIsLoading(true);
     try {
-      axios.get(process.env.NEXT_PUBLIC_API_URL + "/peternakan").then((res) => {
-        setList(res.data);
-      });
+      await axios
+        .get(process.env.NEXT_PUBLIC_API_URL + "/peternakan")
+        .then((res) => {
+          setList(res.data);
+        });
     } catch (err) {
       console.log(err);
     } finally {
