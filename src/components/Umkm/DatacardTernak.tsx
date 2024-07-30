@@ -5,14 +5,14 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const DataCard = ({ data, pageNow, index }: any) => {
   const router = useRouter();
-  const goToDetail = () => {
-    router.push(`/${pageNow}/${data._id}`);
-  };
+  // const goToDetail = () => {
+  //   router.push(`/peternakan/${data._id}`);
+  // };
 
   return (
     <AnimatePresence>
       <motion.div
-        onClick={goToDetail}
+        // onClick={goToDetail}
         initial={{
           opacity: index % 2 === 0 ? 0 : 1,
           x: index % 2 === 0 ? -200 : 0,
