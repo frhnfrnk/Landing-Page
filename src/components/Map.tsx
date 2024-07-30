@@ -234,7 +234,6 @@ function Map() {
               <SelectItem value="all">All</SelectItem>
               <SelectItem value="umkm">UMKM</SelectItem>
               <SelectItem value="wisata">Wisata</SelectItem>
-              <SelectItem value="budaya">Budaya</SelectItem>
               <SelectItem value="peternakan">Peternakan</SelectItem>
             </SelectContent>
           </Select>

@@ -1,5 +1,6 @@
 "use client";
 import PrimaryButton from "@/components/Button/PrimaryButton";
+import BudayaForm from "@/components/Form/BudayaForm";
 import UmkmInfoForm from "@/components/Form/UmkmForm";
 import Loading from "@/components/Loading";
 import { toast } from "@/components/ui/use-toast";
@@ -107,7 +108,7 @@ const Create = () => {
         <>
           <Header />
           <div className="flex flex-col lg:flex-row gap-4">
-            <UmkmInfoForm />
+            <BudayaForm />
           </div>
         </>
       )}

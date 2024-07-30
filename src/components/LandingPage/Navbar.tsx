@@ -89,6 +89,12 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="group w-full md:w-auto flex items-center justify-end transition duration-300">
+              <Link href="/artikel" className="w-full ">
+                Artikel
+                <span className="block max-w-0 group-hover:max-w-full rounded-full transition-all duration-500 h-0.5 bg-black"></span>
+              </Link>
+            </li>
+            <li className="group w-full md:w-auto flex items-center justify-end transition duration-300">
               <Link href="/map" className="w-full ">
                 Map
                 <span className="block max-w-0 group-hover:max-w-full rounded-full transition-all duration-500 h-0.5 bg-black"></span>
