@@ -4,6 +4,15 @@ import { User } from "@/utils/types/user";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { IoIosArrowDown } from "react-icons/io";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
   const router = useRouter();
@@ -82,18 +91,7 @@ const Navbar = () => {
                 <span className="block max-w-0 group-hover:max-w-full rounded-full transition-all duration-500 h-0.5 bg-black"></span>
               </Link>
             </li>
-            <li className="group w-full md:w-auto flex items-center justify-end transition duration-300">
-              <Link href="/budaya" className="w-full ">
-                Budaya
-                <span className="block max-w-0 group-hover:max-w-full rounded-full transition-all duration-500 h-0.5 bg-black"></span>
-              </Link>
-            </li>
-            <li className="group w-full md:w-auto flex items-center justify-end transition duration-300">
-              <Link href="/artikel" className="w-full ">
-                Artikel
-                <span className="block max-w-0 group-hover:max-w-full rounded-full transition-all duration-500 h-0.5 bg-black"></span>
-              </Link>
-            </li>
+
             <li className="group w-full md:w-auto flex items-center justify-end transition duration-300">
               <Link href="/map" className="w-full ">
                 Map
@@ -108,6 +106,41 @@ const Navbar = () => {
                 Report
                 <span className="block max-w-0 group-hover:max-w-full rounded-full transition-all duration-500 h-0.5 bg-black"></span>
               </Link>
+            </li>
+            <li className="group w-full md:w-auto flex items-center justify-end transition duration-300">
+              <DropdownMenu>
+                <DropdownMenuTrigger
+                  className="focus:outline-none flex items-center gap-1
+                "
+                >
+                  <p>Other</p>
+                  <IoIosArrowDown />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  className="translate-y-4 -translate-x-10 w-40
+                "
+                >
+                  <DropdownMenuItem>
+                    <Link
+                      href="/budaya"
+                      className="w-full font-sirukota uppercase text-2xl  flex-row  space-x-8 rtl:space-x-reverse text-right"
+                    >
+                      Budaya
+                      <span className="block max-w-0 group-hover:max-w-full rounded-full transition-all duration-500 h-0.5 bg-black"></span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <Link
+                      href="/peternakan"
+                      className="w-full font-sirukota uppercase text-2xl  flex-row  space-x-8 rtl:space-x-reverse text-right"
+                    >
+                      Peternakan
+                      <span className="block max-w-0 group-hover:max-w-full rounded-full transition-all duration-500 h-0.5 bg-black"></span>
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </li>
           </ul>
           <div
@@ -145,6 +178,12 @@ const Navbar = () => {
             <li className="group  md:w-auto flex items-center justify-end transition duration-300">
               <Link href="/budaya" className="w-full ">
                 Budaya
+                <span className="block max-w-0 group-hover:max-w-full rounded-full transition-all duration-500 h-0.5 bg-black"></span>
+              </Link>
+            </li>
+            <li className="group  md:w-auto flex items-center justify-end transition duration-300">
+              <Link href="/peternakan" className="w-full ">
+                Peternakan
                 <span className="block max-w-0 group-hover:max-w-full rounded-full transition-all duration-500 h-0.5 bg-black"></span>
               </Link>
             </li>
