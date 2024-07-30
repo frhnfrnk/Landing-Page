@@ -10,7 +10,7 @@ const UMKM = () => {
       className="w-full bg-[#F5EBE7] min-h-screen relative pb-40 "
       style={{
         backgroundImage: "url('/Images/umkmbg.svg')",
-        backgroundSize: "cover",
+        backgroundSize: "contain",
         backgroundRepeat: "no-repeat",
       }}
     >

@@ -129,12 +129,24 @@ export default function TabDesa() {
           <SelectValue placeholder="Semua Desa" />
         </SelectTrigger>
         <SelectContent>
+          <SelectItem
+            value="Semua Desa"
+            className="text-center"
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
+            Semua Desa
+          </SelectItem>
           {listDesa.map((data, index) => (
             <SelectItem
               key={index}
               value={data.name}
               className=" text-center
             "
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
             >
               Desa {data.name}
             </SelectItem>
@@ -163,41 +175,6 @@ export default function TabDesa() {
               </div>
             )}
           </div>
-          {/* {activeTab === "Desa Sakti" ? (
-            <div className="flex gap-5 flex-col">
-              {filteredData.length != 0 ? (
-                filteredData.map((data, index) => (
-                  <div
-                    key={index}
-                    className="w-full flex items-center justify-center"
-                  >
-                    <DataCard data={data} pageNow={pageNow} index={index} />
-                  </div>
-                ))
-              ) : (
-                <div className="w-full flex items-center justify-center">
-                  <p>Tidak ada data</p>
-                </div>
-              )}
-            </div>
-          ) : (
-            <div className="flex gap-5 flex-col">
-              {filteredData.length != 0 ? (
-                filteredData.map((data, index) => (
-                  <div
-                    key={index}
-                    className="w-full flex items-center justify-center"
-                  >
-                    <DataCard data={data} pageNow={pageNow} index={index} />
-                  </div>
-                ))
-              ) : (
-                <div className="w-full flex items-center justify-center">
-                  <p>Tidak ada data</p>
-                </div>
-              )}
-            </div>
-          )} */}
         </div>
       )}
     </div>
