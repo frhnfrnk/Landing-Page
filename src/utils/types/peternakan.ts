@@ -10,4 +10,11 @@ export interface Peternakan {
   latitude: number;
   longitude: number;
   image: string[];
+  total: number;
+  jantan_dewasa: number;
+  betina_dewasa: number;
+  jantan_anakan: number;
+  betina_anakan: number;
+  status_vaksinasi: string;
+  obat_cacing: string;
 }

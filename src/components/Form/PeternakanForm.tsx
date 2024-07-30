@@ -52,6 +52,14 @@ const PeternakanInfoForm = () => {
     dispatch(setDataPeternakan({ desa: findId?._id }));
   };
 
+  const handleVaksin = (value: string) => {
+    dispatch(setDataPeternakan({ status_vaksinasi: value }));
+  };
+
+  const handleObatCacing = (value: string) => {
+    dispatch(setDataPeternakan({ obat_cacing: value }));
+  };
+
   useEffect(() => {
     fetchDesa();
   }, []);
@@ -86,43 +94,12 @@ const PeternakanInfoForm = () => {
             </Select>
           </div>
 
-          <div className="w-full flex flex-col gap-1 mb-3">
-            <label htmlFor="desa">Desa</label>
-            <Select
-              onValueChange={handleDesa}
-              defaultValue={peternakan?.desa?.name}
-            >
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Desa" />
-              </SelectTrigger>
-              <SelectContent>
-                {listDesa.map((data, index) => (
-                  <SelectItem key={index} value={data.name}>
-                    {data.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
           <TextArea
             label="Description"
             value={peternakan ? peternakan.description : ""}
             id="description"
             onChange={(value) => {
               handleChange("description", value);
-            }}
-          />
-
-          <InputField
-            label="Alamat Lengkap"
-            type="text"
-            wajib
-            value={peternakan ? peternakan.address : ""}
-            id="address"
-            placeholder="Masukkan alamat lengkap"
-            onChange={(value) => {
-              handleChange("address", value);
             }}
           />
 
@@ -149,6 +126,103 @@ const PeternakanInfoForm = () => {
                 handleChange("longitude", value);
               }}
             />
+          </div>
+          <div className="flex gap-5 shrink">
+            <InputField
+              label="Jumlah ternak"
+              type="text"
+              wajib
+              value={peternakan ? peternakan.total : ""}
+              id="total"
+              placeholder="Enter total"
+              onChange={(value) => {
+                handleChange("total", value);
+              }}
+            />
+            <InputField
+              label="Jantan Dewasa"
+              type="text"
+              wajib
+              value={peternakan ? peternakan.jantan_dewasa : ""}
+              id="jantan_dewasa"
+              placeholder="Enter total jantan dewasa"
+              onChange={(value) => {
+                handleChange("jantan_dewasa", value);
+              }}
+            />
+          </div>
+          <div className="flex gap-5 shrink">
+            <InputField
+              label="Betina Dewasa"
+              type="text"
+              wajib
+              value={peternakan ? peternakan.betina_dewasa : ""}
+              id="betina_dewasa"
+              placeholder="Enter total betina dewasa"
+              onChange={(value) => {
+                handleChange("betina_dewasa", value);
+              }}
+            />
+            <InputField
+              label="Jantan Anakan"
+              type="text"
+              wajib
+              value={peternakan ? peternakan.jantan_anakan : ""}
+              id="jantan_anakan"
+              placeholder="Enter total jantan anakan"
+              onChange={(value) => {
+                handleChange("jantan_dewasa", value);
+              }}
+            />
+            <InputField
+              label="Betina Anakan"
+              type="text"
+              wajib
+              value={peternakan ? peternakan.betina_anakan : ""}
+              id="betina_anakan"
+              placeholder="Enter total betina anakan"
+              onChange={(value) => {
+                handleChange("jantan_dewasa", value);
+              }}
+            />
+          </div>
+          <div className="flex gap-5 shrink">
+            <div className="w-full">
+              <label htmlFor="Status Vaksinasi">Status Vaksinasi</label>
+              <Select
+                onValueChange={handleVaksin}
+                defaultValue={peternakan?.status_vaksinasi}
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Status Vaksinasi" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Belum divaksin">Belum divaksin</SelectItem>
+                  <SelectItem value="Sudah divaksin">Sudah divaksin</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="w-full">
+              <label htmlFor="Pemberian Obat Cacing">
+                Pemberian Obat Cacing
+              </label>
+              <Select
+                onValueChange={handleObatCacing}
+                defaultValue={peternakan?.obat_cacing}
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Status Vaksinasi" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Belum diberikan">
+                    Belum diberikan
+                  </SelectItem>
+                  <SelectItem value="Sudah diberikan">
+                    Sudah diberikan
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
         </div>
         <div className="w-[35%] p-6">

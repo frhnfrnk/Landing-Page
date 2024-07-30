@@ -1,5 +1,6 @@
 "use client";
 import PrimaryButton from "@/components/Button/PrimaryButton";
+import PeternakanInfoForm from "@/components/Form/PeternakanForm";
 import WisataInfoForm from "@/components/Form/WisataForm";
 import Loading from "@/components/Loading";
 import { toast } from "@/components/ui/use-toast";
@@ -111,7 +112,7 @@ const Create = () => {
         <>
           <Header />
           <div className="flex flex-col lg:flex-row gap-4">
-            <WisataInfoForm />
+            <PeternakanInfoForm />
           </div>
         </>
       )}
