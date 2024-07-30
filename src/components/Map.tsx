@@ -30,6 +30,7 @@ import { logout } from "@/lib/features/auth/authSlice";
 import { findAllUmkm } from "@/lib/features/umkm/umkmSlice";
 import { findAllWisata } from "@/lib/features/wisata/wisataSlice";
 import { findAllPeternakan } from "@/lib/features/peternakan/peternakanSlice";
+import { GiCow } from "react-icons/gi";
 
 interface DataMarker {
   id: number;
@@ -170,7 +171,7 @@ function Map() {
                 {
                   umkm: <FaStore color="red" size={24} />,
                   wisata: <FaUmbrellaBeach color="blue" size={24} />,
-                  peternakan: <FaMapMarkerAlt color="yellow" size={24} />,
+                  peternakan: <GiCow color="#562b00" size={24} />,
                 }[location.category]
               }
             </button>
@@ -208,7 +209,13 @@ function Map() {
             }
             <div className={classes.popupInfo}>
               <img
-                src={selectedMarker.image ? selectedMarker.image[0] : ""}
+                src={
+                  selectedMarker.image
+                    ? selectedMarker.image.length > 0
+                      ? selectedMarker.image[0]
+                      : "/images/no-image.jpg"
+                    : "/images/no-image.jpg"
+                }
                 alt={selectedMarker.name}
               />
               <Link href={`/${selectedMarker.category}/${selectedMarker.id}`}>
