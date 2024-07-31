@@ -84,6 +84,7 @@ export default function TabDesa() {
 
   const handleToggle = (name: string) => {
     if (name === "Semua Desa") {
+      setActiveTab(name);
       setFilteredData(list);
     } else {
       setActiveTab(name);
