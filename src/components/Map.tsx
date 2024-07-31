@@ -9,7 +9,7 @@ import MapGL, {
   MapRef,
 } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-
+import { IoMdArrowRoundBack } from "react-icons/io";
 import {
   Select,
   SelectContent,
@@ -141,6 +141,10 @@ function Map() {
     }
   }, [selectedCategory]);
 
+  const handleBackClick = () => {
+    window.history.back();
+  };
+
   return (
     <main className={classes.mainStyle}>
       <MapGL
@@ -225,9 +229,19 @@ function Map() {
           </Popup>
         ) : null}
 
-        <div className="flex gap-5 absolute top-4 right-4">
+        <div className="flex flex-row-reverse gap-5 absolute top-4 right-4">
+          <button
+            onClick={handleBackClick}
+            className="flex items-center gap-2 text-white bg-primary px-2 rounded-md"
+          >
+            <IoMdArrowRoundBack size={24} />
+            <span>Back</span>
+          </button>
           <Select onValueChange={selectCategory}>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger
+              className="w-[180px] bg-primary text-white outline-none border-0 focus:ring-0 rounded-md px-2 py-1
+            "
+            >
               <SelectValue placeholder="All" />
             </SelectTrigger>
             <SelectContent>
