@@ -27,7 +27,6 @@ const DetailPeternakan = () => {
       .then((res) => {
         if (res.status === 200) {
           setPeternakan(res.data);
-          console.log(res.data);
         } else {
           console.log("error");
         }

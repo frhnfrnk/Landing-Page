@@ -23,10 +23,11 @@ const DetailUMKM = () => {
   const fetchUmkm = async () => {
     const id = pathName.split("/").pop();
     if (id) {
-      dispatch(findOneUmkm(id))
+      await dispatch(findOneUmkm(id))
         .unwrap()
         .then((res) => {
           setUmkmData(res);
+          console.log(res);
         })
         .catch((err) => {
           console.log(err);

@@ -23,7 +23,7 @@ const CarouselComponent = ({ img }: any) => {
             </CarouselItem>
           ))}
       </CarouselContent>
-      {img.length > 1 && (
+      {img && img.length > 1 && (
         <>
           <CarouselPrevious />
           <CarouselNext />
