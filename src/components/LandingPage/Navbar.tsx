@@ -195,7 +195,7 @@ const Navbar = () => {
             </li>
             <li className="group  md:w-auto flex items-center justify-end transition duration-300">
               <Link
-                href="https://report-nusapenida.vercel.app/"
+                href="https://report.nirwananusapenida.com/"
                 className="w-full "
               >
                 Report
