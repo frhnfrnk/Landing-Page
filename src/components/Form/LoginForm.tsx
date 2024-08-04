@@ -7,6 +7,7 @@ import { login } from "@/lib/features/auth/authSlice";
 import { toast } from "../ui/use-toast";
 import { Toaster } from "../ui/toaster";
 import InputPasswordField from "../Field/InputPasswordField";
+import Loading from "../Loading";
 
 interface LoginFormProps {
   isModal?: boolean;
@@ -20,10 +21,11 @@ const LoginForm: React.FC<LoginFormProps> = ({ isModal = false, children }) => {
     username: "",
     password: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    setIsLoading(true);
     dispatch(login(userData))
       .unwrap()
       .then((res) => {
@@ -38,6 +40,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ isModal = false, children }) => {
       })
       .catch((err) => {
         console.log(err);
+        setIsLoading(false);
         toast({
           variant: "destructive",
           title: "Failed to login",
@@ -54,38 +57,44 @@ const LoginForm: React.FC<LoginFormProps> = ({ isModal = false, children }) => {
   };
 
   return (
-    <form className="w-full p-6" onSubmit={handleLogin}>
-      <InputField
-        label="Username"
-        type="text"
-        id="text"
-        value={userData.username}
-        onChange={(value) => {
-          handleChange("username", value);
-        }}
-      />
-      <InputPasswordField
-        label="Password"
-        id="password"
-        value={userData.password}
-        onChange={(value) => {
-          handleChange("password", value);
-        }}
-      />
-      <p className="text-sm text-left mb-2">Forgot Password?</p>
-      <div className="flex flex-col gap-3">
-        <input
-          type="submit"
-          value={"Log in"}
-          className="bg-primary text-white rounded font-medium py-2 cursor-pointer"
-        />
-      </div>
-      <p className="text-center text-sm mt-3">
-        Don&apos;t have an account? {children}
-      </p>
+    <>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <form className="w-full p-6" onSubmit={handleLogin}>
+          <InputField
+            label="Username"
+            type="text"
+            id="text"
+            value={userData.username}
+            onChange={(value) => {
+              handleChange("username", value);
+            }}
+          />
+          <InputPasswordField
+            label="Password"
+            id="password"
+            value={userData.password}
+            onChange={(value) => {
+              handleChange("password", value);
+            }}
+          />
+          <p className="text-sm text-left mb-2">Forgot Password?</p>
+          <div className="flex flex-col gap-3">
+            <input
+              type="submit"
+              value={"Log in"}
+              className="bg-primary text-white rounded font-medium py-2 cursor-pointer"
+            />
+          </div>
+          <p className="text-center text-sm mt-3">
+            Don&apos;t have an account? {children}
+          </p>
 
-      <Toaster />
-    </form>
+          <Toaster />
+        </form>
+      )}
+    </>
   );
 };
 
