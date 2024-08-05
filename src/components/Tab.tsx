@@ -93,9 +93,9 @@ export default function TabDesa() {
 
   return (
     <div className="container mx-auto p-4 font-poppins">
-      <div className="hidden md:flex justify-center mb-4">
+      <div className="w-full md:w-[50vw] mx-auto hidden md:flex flex-wrap justify-center mb-4">
         <button
-          className={`px-4 py-2 mx-2 rounded ${
+          className={`px-4 py-2 mx-2 my-2 rounded ${
             activeTab === "Semua Desa"
               ? "bg-[#D7713E] text-white"
               : "bg-gray-200 text-gray-500"
@@ -107,7 +107,7 @@ export default function TabDesa() {
         {listDesa.map((data, index) => (
           <button
             key={index}
-            className={`px-4 py-2 mx-2 rounded ${
+            className={`px-4 py-2 mx-2 my-2 rounded ${
               activeTab === data.name
                 ? "bg-[#D7713E] text-white"
                 : "bg-gray-200 text-gray-500"
@@ -118,6 +118,7 @@ export default function TabDesa() {
           </button>
         ))}
       </div>
+
       <Select
         onValueChange={(value) => {
           setActiveTab(value);
