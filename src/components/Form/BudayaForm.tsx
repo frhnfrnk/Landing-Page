@@ -103,8 +103,9 @@ const BudayaForm = () => {
                 <SelectValue placeholder="Category" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="F&B">F&B</SelectItem>
-                <SelectItem value="Kerajinan">Kerajinan</SelectItem>
+                <SelectItem value="Tarian">Sejarah</SelectItem>
+                <SelectItem value="Musik">Musik</SelectItem>
+                <SelectItem value="Upacara Adat">Upacara Adat</SelectItem>
                 <SelectItem value="Other">Other</SelectItem>
               </SelectContent>
             </Select>
