@@ -156,8 +156,10 @@ const Navbar = () => {
         </div>
         <div
           className={`overflow-hidden transition-all duration-300 ${
-            openMenu ? "w-[40%]" : "w-0"
-          }  bg-white rounded-2xl mt-2 md:hidden`}
+            openMenu
+              ? "max-h-screen pointer-events-auto"
+              : "max-h-0 pointer-events-none"
+          } bg-white rounded-2xl mt-2 flex md:hidden`}
         >
           <ul
             className={`w-full h-full  font-sirukota uppercase text-xl  py-3 px-6  flex-col flex items-end justify-center space-y-2 rtl:space-y-reverse `}

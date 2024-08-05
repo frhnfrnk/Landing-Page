@@ -92,7 +92,7 @@ export default function TabDesa() {
   };
 
   return (
-    <div className="container mx-auto p-4 font-poppins">
+    <div className="container mx-auto p-4 font-poppins mt-5">
       <div className="w-full md:w-[50vw] mx-auto hidden md:flex flex-wrap justify-center mb-4">
         <button
           className={`px-4 py-2 mx-2 my-2 rounded ${
@@ -130,7 +130,7 @@ export default function TabDesa() {
         >
           <SelectValue placeholder="Semua Desa" />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="z-[1000] w-full">
           <SelectItem
             value="Semua Desa"
             className="text-center"
