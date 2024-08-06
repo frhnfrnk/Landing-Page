@@ -7,9 +7,9 @@ import Navbar from "@/components/LandingPage/Navbar";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Nirwana Nusa Penida",
+  title: "Nirwana Nusa Penida - Surga Wisata di Bali",
   description:
-    "Nirwana Nusa Penida is a website that provides information about Nusa Penida, Bali. Nusa Penida is a small island located in the southeast of Bali, Indonesia. The island is part of the Klungkung Regency and is the largest of the three Nusa Islands. The other two are Nusa Lembongan and Nusa Ceningan. Nusa Penida is a popular destination for tourists who are looking to escape the hustle and bustle of Bali and experience a more relaxed and laid-back atmosphere. The island is known for its stunning beaches, crystal-clear waters, and beautiful landscapes. It is also home to a wide variety of marine life, making it a popular spot for snorkeling and diving. Whether you are looking to relax on the beach, explore the islands natural beauty, or get up close and personal with the local marine life, Nusa Penida has something for everyone. This website aims to provide visitors with all the information they need to plan their trip to Nusa Penida and make the most of their time on the island.",
+    "Nirwana Nusa Penida adalah situs web yang menyediakan informasi lengkap tentang Nusa Penida, Bali. Pulau kecil ini terletak di tenggara Bali dan merupakan bagian dari Kabupaten Klungkung. Nusa Penida terkenal dengan pantainya yang indah, air laut yang jernih, dan pemandangan alam yang menakjubkan. Pulau ini menjadi destinasi favorit bagi wisatawan yang ingin menikmati suasana yang lebih tenang dibandingkan dengan Bali. Dikenal juga sebagai surga bagi penyelam dan snorkeler, Nusa Penida menawarkan pengalaman luar biasa dengan keanekaragaman hayati lautnya. Temukan semua informasi yang Anda butuhkan untuk merencanakan perjalanan ke Nusa Penida di situs ini.",
 };
 
 export default function Home() {

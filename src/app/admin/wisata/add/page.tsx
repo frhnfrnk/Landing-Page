@@ -1,6 +1,5 @@
 "use client";
 import PrimaryButton from "@/components/Button/PrimaryButton";
-import UmkmInfoForm from "@/components/Form/UmkmForm";
 import WisataInfoForm from "@/components/Form/WisataForm";
 import Loading from "@/components/Loading";
 import { toast } from "@/components/ui/use-toast";
@@ -101,7 +100,7 @@ const Header = () => {
 };
 
 const Create = () => {
-  const status = useAppSelector((state) => state.umkm.status);
+  const status = useAppSelector((state) => state.wisata.status);
 
   return (
     <>

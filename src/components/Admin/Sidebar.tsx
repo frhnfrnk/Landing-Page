@@ -87,7 +87,9 @@ const Sidebar: React.FC = () => {
           }`}
         >
           {!open && (
-            <h2 className="text-xl font-bold text-white">Deepublish</h2>
+            <h2 className="text-xl font-bold text-white font-sirukota">
+              Nirwana
+            </h2>
           )}
           <button
             onClick={() => setOpen(!open)}

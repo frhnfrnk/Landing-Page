@@ -7,17 +7,17 @@ import { toast } from "@/components/ui/use-toast";
 import axiosInstance from "@/lib/axios";
 import { logout } from "@/lib/features/auth/authSlice";
 import {
-  addWisata,
-  emtpyDatawisata,
+  addBudaya,
+  emtpyDatabudaya,
   setLoading,
-} from "@/lib/features/wisata/wisataSlice";
+} from "@/lib/features/budaya/budayaSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/store";
 import React, { useEffect } from "react";
 
 const Header = () => {
   const dispatch = useAppDispatch();
-  const wisataData = useAppSelector((state) => state.wisata.wisata);
-  const imageData = useAppSelector((state) => state.wisata.image);
+  const budayaData = useAppSelector((state) => state.budaya.budaya);
+  const imageData = useAppSelector((state) => state.budaya.image);
 
   const uploadImage = async (image: any) => {
     let url = [] as any;
@@ -51,20 +51,21 @@ const Header = () => {
 
   const handleAdd = async () => {
     dispatch(setLoading("loading"));
-    let data = { ...wisataData } as any;
+    let data = { ...budayaData } as any;
     const image = imageData as any;
     let imageUrl = [] as any;
     if (image.length > 0) {
       imageUrl = await uploadImage(image);
       data = { ...data, image: imageUrl };
     }
-    dispatch(addWisata(data))
+    console.log(data);
+    dispatch(addBudaya(data))
       .unwrap()
       .then((res) => {
-        dispatch(emtpyDatawisata());
+        dispatch(emtpyDatabudaya());
         toast({
           title: "Success",
-          description: "Wisata has been saved",
+          description: "Budaya has been saved",
           variant: "default",
         });
       })
@@ -85,7 +86,7 @@ const Header = () => {
   return (
     <div className="flex justify-between items-center mb-5">
       <h1 className="text-sm lg:text-xl font-semibold">
-        Form Penambahan Wisata
+        Form Penambahan Budaya
       </h1>
       <div className="flex gap-2">
         <PrimaryButton className="text-xs" onClick={handleAdd}>
@@ -98,7 +99,7 @@ const Header = () => {
 };
 
 const Create = () => {
-  const status = useAppSelector((state) => state.umkm.status);
+  const status = useAppSelector((state) => state.budaya.status);
 
   return (
     <>

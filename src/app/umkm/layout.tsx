@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "UMKM - Nirwana Nusa Penida",
   description:
-    "Explore a diverse range of local businesses in Nirwana Nusa Penida. Discover unique products, traditional crafts, and local services that showcase the rich culture and entrepreneurial spirit of the community.",
+    "Jelajahi berbagai usaha lokal di Nirwana Nusa Penida. Temukan produk unik, kerajinan tradisional, dan layanan lokal yang mencerminkan kekayaan budaya serta semangat kewirausahaan masyarakat setempat.",
 };
 
 export default function UmkmLayout({

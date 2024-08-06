@@ -28,7 +28,6 @@ const Tiptap = ({ onChange, content }: any) => {
 
   const handleSave = (e: any) => {
     e.preventDefault();
-    console.log(content);
     dispatch(setDatabudaya({ content: content }));
   };
 

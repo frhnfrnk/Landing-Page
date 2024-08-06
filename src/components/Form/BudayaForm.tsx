@@ -58,7 +58,8 @@ const BudayaForm = () => {
   };
 
   const handleContentChange = (value: string) => {
-    setContent(value);
+    console.log(value);
+    dispatch(setDatabudaya({ content: value }));
   };
 
   useEffect(() => {
