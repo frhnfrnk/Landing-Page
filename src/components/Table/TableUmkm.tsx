@@ -27,6 +27,7 @@ const TableData = ({ data }: any) => {
         <TableRow>
           <TableHead>Title</TableHead>
           <TableHead>Category</TableHead>
+          <TableHead>Desa</TableHead>
           <TableHead>Address</TableHead>
           <TableHead>Action</TableHead>
         </TableRow>
@@ -36,6 +37,7 @@ const TableData = ({ data }: any) => {
           <TableRow key={item._id}>
             <TableCell className="w-1/4">{item.name}</TableCell>
             <TableCell>{item.category}</TableCell>
+            <TableCell>{item.desa.name}</TableCell>
             <TableCell>{item.address}</TableCell>
             <TableCell>
               <div className="flex gap-2">

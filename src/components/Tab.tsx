@@ -27,6 +27,7 @@ export default function TabDesa() {
   const [list, setList] = useState<Umkm[]>([]);
   const [listDesa, setListDesa] = useState<Desa[]>([]);
   const [filteredData, setFilteredData] = useState<Umkm[]>([]);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const pathName = usePathname();
   const dispatch = useAppDispatch();
@@ -92,7 +93,11 @@ export default function TabDesa() {
   };
 
   return (
-    <div className="container mx-auto p-4 font-poppins mt-5">
+    <div
+      className={`container mx-auto p-4 font-poppins mt-5 ${
+        dropdownOpen ? "pointer-events-none" : "pointer-events-auto"
+      }`}
+    >
       <div className="w-full md:w-[50vw] mx-auto hidden md:flex flex-wrap justify-center mb-4">
         <button
           className={`px-4 py-2 mx-2 my-2 rounded ${
@@ -123,6 +128,7 @@ export default function TabDesa() {
         onValueChange={(value) => {
           setActiveTab(value);
         }}
+        onOpenChange={(open) => setDropdownOpen(open)} // Update state when dropdown opens/closes
       >
         <SelectTrigger
           className="w-1/2 lg:hidden flex mx-auto mb-4
@@ -131,13 +137,7 @@ export default function TabDesa() {
           <SelectValue placeholder="Semua Desa" />
         </SelectTrigger>
         <SelectContent className="z-[1000] w-full">
-          <SelectItem
-            value="Semua Desa"
-            className="text-center"
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-          >
+          <SelectItem value="Semua Desa" className="text-center">
             Semua Desa
           </SelectItem>
           {listDesa.map((data, index) => (
@@ -146,9 +146,6 @@ export default function TabDesa() {
               value={data.name}
               className=" text-center
             "
-              onClick={(e) => {
-                e.stopPropagation();
-              }}
             >
               Desa {data.name}
             </SelectItem>
@@ -160,7 +157,7 @@ export default function TabDesa() {
           <Loading />
         </div>
       ) : (
-        <div className="p-4 ">
+        <div className="p-4 z-[10]">
           <div className="flex gap-5 flex-col">
             {filteredData.length != 0 ? (
               filteredData.map((data, index) => (

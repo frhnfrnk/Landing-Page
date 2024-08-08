@@ -5,7 +5,7 @@ import TabDesa from "@/components/Tab";
 const UMKM = () => {
   return (
     <div
-      className=" w-full bg-[#F5EBE7] min-h-[150vh] relative"
+      className=" w-full bg-[#F5EBE7] min-h-[150vh] relative pb-40"
       style={{
         backgroundImage: "url('/Images/wisatabg.svg')",
         backgroundSize: "contain",

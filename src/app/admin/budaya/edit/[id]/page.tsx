@@ -1,32 +1,25 @@
 "use client";
 import PrimaryButton from "@/components/Button/PrimaryButton";
+import BudayaForm from "@/components/Form/BudayaForm";
 import UmkmInfoForm from "@/components/Form/UmkmForm";
 import Loading from "@/components/Loading";
 import { toast } from "@/components/ui/use-toast";
 import axiosInstance from "@/lib/axios";
 import { logout } from "@/lib/features/auth/authSlice";
 import {
-  addUmkm,
-  emtpyDataUmkm,
-  findOneUmkm,
-  setDataUmkm,
+  findOneBudaya,
+  setDatabudaya,
   setFetchImage,
-  setLoading,
-  updateUmkm,
-} from "@/lib/features/umkm/umkmSlice";
-import {
-  findOneWisata,
-  setDatawisata,
-  updateWisata,
-} from "@/lib/features/wisata/wisataSlice";
+  updateBudaya,
+} from "@/lib/features/budaya/budayaSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/store";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const Header = () => {
   const dispatch = useAppDispatch();
-  const wisataData = useAppSelector((state) => state.wisata.wisata);
-  const imageData = useAppSelector((state) => state.wisata.image);
+  const budayaData = useAppSelector((state) => state.budaya.budaya);
+  const imageData = useAppSelector((state) => state.budaya.image);
   const pathName = usePathname();
 
   const uploadImage = async (image: any) => {
@@ -60,7 +53,7 @@ const Header = () => {
   };
 
   const handleUpdate = async () => {
-    let data = { ...wisataData } as any;
+    let data = { ...budayaData } as any;
     const id = pathName.split("/").pop();
     if (typeof data.desa === "object") {
       data.desa = data.desa._id;
@@ -74,12 +67,12 @@ const Header = () => {
       data = { ...data, image: imageUrl };
     }
     if (id) {
-      dispatch(updateWisata({ id, wisata: data }))
+      dispatch(updateBudaya({ id, budaya: data }))
         .unwrap()
         .then((res) => {
           toast({
             title: "Success",
-            description: "Wisata has been saved",
+            description: "Budaya has been saved",
             variant: "default",
           });
           setTimeout(() => {
@@ -124,13 +117,13 @@ const Edit = () => {
 
   const [fetchStatus, setFetchStatus] = useState(false);
 
-  const fetchWisata = async () => {
+  const fetchBudaya = async () => {
     const id = pathName.split("/").pop();
     if (id) {
-      dispatch(findOneWisata(id))
+      dispatch(findOneBudaya(id))
         .unwrap()
         .then((res) => {
-          dispatch(setDatawisata(res));
+          dispatch(setDatabudaya(res));
           dispatch(setFetchImage(res.image));
         })
         .catch((err) => {
@@ -150,7 +143,7 @@ const Edit = () => {
 
   useEffect(() => {
     if (!fetchStatus) {
-      fetchWisata();
+      fetchBudaya();
       setFetchStatus(true);
     }
   }, [fetchStatus]);
@@ -167,7 +160,7 @@ const Edit = () => {
         <>
           <Header />
           <div className="flex flex-col lg:flex-row gap-4">
-            <UmkmInfoForm />
+            <BudayaForm />
           </div>
         </>
       )}

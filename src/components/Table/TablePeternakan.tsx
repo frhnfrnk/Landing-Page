@@ -26,6 +26,7 @@ const TableData = ({ data }: any) => {
         <TableRow>
           <TableHead>Title</TableHead>
           <TableHead>Category</TableHead>
+          <TableHead>Desa</TableHead>
           <TableHead>Address</TableHead>
         </TableRow>
       </TableHeader>
@@ -34,6 +35,7 @@ const TableData = ({ data }: any) => {
           <TableRow key={item._id}>
             <TableCell className="w-1/4">{item.name}</TableCell>
             <TableCell>{item.category}</TableCell>
+            <TableCell>{item.desa}</TableCell>
             <TableCell>{item.address}</TableCell>
           </TableRow>
         ))}

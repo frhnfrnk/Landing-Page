@@ -69,6 +69,9 @@ const Header = () => {
           description: "Wisata has been saved",
           variant: "default",
         });
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       })
       .catch((err) => {
         console.log(err);

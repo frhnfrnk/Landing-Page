@@ -2,10 +2,10 @@ import React from "react";
 import ImageAbs from "@/components/Umkm/ImageAbs";
 import TabDesa from "@/components/Tab";
 
-const UMKM = () => {
+const Budaya = () => {
   return (
     <div
-      className=" w-full bg-[#F5EBE7] min-h-screen relative"
+      className=" w-full bg-[#F5EBE7] min-h-screen relative pb-40"
       style={{
         backgroundImage: "url('/Images/budaya.svg')",
         backgroundSize: "cover",
@@ -27,4 +27,4 @@ const UMKM = () => {
   );
 };
 
-export default UMKM;
+export default Budaya;

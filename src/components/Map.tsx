@@ -19,8 +19,8 @@ import {
 } from "@/components/ui/select";
 
 import classes from "@/app/Page.module.css";
-import { use, useEffect, useRef, useState } from "react";
-import { FaMapMarkerAlt, FaStore, FaUmbrellaBeach } from "react-icons/fa";
+import { useEffect, useRef, useState } from "react";
+import { FaStore, FaUmbrellaBeach } from "react-icons/fa";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import SuspenseWrapper from "./Suspense/SuspenWrapper";
@@ -31,6 +31,7 @@ import { findAllUmkm } from "@/lib/features/umkm/umkmSlice";
 import { findAllWisata } from "@/lib/features/wisata/wisataSlice";
 import { findAllPeternakan } from "@/lib/features/peternakan/peternakanSlice";
 import { GiCow } from "react-icons/gi";
+import { Button } from "./ui/button";
 
 interface DataMarker {
   id: number;
@@ -260,6 +261,16 @@ function Map() {
               <SelectItem value="peternakan">Peternakan</SelectItem>
             </SelectContent>
           </Select>
+          {selectedCategory == "peternakan" && (
+            <Link
+              target="_blank"
+              href="https://drive.google.com/drive/folders/1-f0phYEaePu8RGkrgPi-jaWhyjUXLExx"
+            >
+              <Button className="flex items-center gap-2 text-white bg-[#D7713E] px-2 rounded-md">
+                Lihat Peternakan Secara PDF
+              </Button>
+            </Link>
+          )}
         </div>
       </MapGL>
     </main>
