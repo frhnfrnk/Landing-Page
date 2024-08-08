@@ -137,7 +137,13 @@ export default function TabDesa() {
           <SelectValue placeholder="Semua Desa" />
         </SelectTrigger>
         <SelectContent className="z-[1000] w-full">
-          <SelectItem value="Semua Desa" className="text-center">
+          <SelectItem
+            value="Semua Desa"
+            className="text-center"
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
             Semua Desa
           </SelectItem>
           {listDesa.map((data, index) => (
@@ -146,6 +152,9 @@ export default function TabDesa() {
               value={data.name}
               className=" text-center
             "
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
             >
               Desa {data.name}
             </SelectItem>

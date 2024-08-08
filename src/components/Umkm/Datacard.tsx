@@ -3,10 +3,13 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const DataCard = ({ data, pageNow, index }: any) => {
+const DataCard = ({ data, pageNow, index, click }: any) => {
   const router = useRouter();
+  console.log(click);
   const goToDetail = () => {
-    router.push(`/${pageNow}/${data._id}`);
+    if (!click) {
+      router.push(`/${pageNow}/${data._id}`);
+    }
   };
 
   return (
