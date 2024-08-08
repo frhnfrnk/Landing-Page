@@ -58,13 +58,24 @@ const DetailPeternakan = () => {
               {peternakan.address}
             </p>
             <div className="w-full flex flex-col mt-5">
-              <p>Jumlah ternak: {peternakan.total}</p>
-              <p>Jantan dewasa: {peternakan.jantan_dewasa}</p>
-              <p>Jantan anakan: {peternakan.jantan_anakan}</p>
-              <p>Betina dewasa: {peternakan.betina_dewasa}</p>
-              <p>Betina anakan: {peternakan.betina_anakan}</p>
-              <p>Status vaksinasi: {peternakan.status_vaksinasi}</p>
-              <p>Obat cacing: {peternakan.obat_cacing}</p>
+              <p className="mb-2">Jumlah ternak: {peternakan.total}</p>
+              {peternakan.jantan_dewasa != "0" && (
+                <p>Jantan dewasa: {peternakan.jantan_dewasa}</p>
+              )}
+              {peternakan.jantan_anakan != "0" && (
+                <p>Jantan anakan: {peternakan.jantan_anakan}</p>
+              )}
+              {peternakan.betina_dewasa != "0" && (
+                <p>Betina dewasa: {peternakan.betina_dewasa}</p>
+              )}
+              {peternakan.betina_anakan != "0" && (
+                <p>Betina anakan: {peternakan.betina_anakan}</p>
+              )}
+
+              <p className="mt-2">
+                Status vaksinasi: {peternakan.status_vaksinasi}
+              </p>
+              <p className="mb-2">Obat cacing: {peternakan.obat_cacing}</p>
               <p>
                 Terakhir diperbarui :{" "}
                 {new Date(peternakan.updatedAt).toLocaleDateString("id-ID", {
