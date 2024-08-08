@@ -22,7 +22,7 @@ import classes from "@/app/Page.module.css";
 import { use, useEffect, useRef, useState } from "react";
 import { FaMapMarkerAlt, FaStore, FaUmbrellaBeach } from "react-icons/fa";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import SuspenseWrapper from "./Suspense/SuspenWrapper";
 import { useAppDispatch } from "@/lib/store";
 import { toast } from "./ui/use-toast";
@@ -50,8 +50,11 @@ function Map() {
   const [selectedMarker, setSelectedMarker] = useState<DataMarker | null>(null);
   const mapRef = useRef<MapRef | null>(null);
   const dispatch = useAppDispatch();
+  const router = useRouter();
+  const [loading, setLoading] = useState(true);
 
   const fetchDataReport = async () => {
+    setLoading(true);
     let umkm = await dispatch(findAllUmkm());
     let wisata = await dispatch(findAllWisata());
     let peternakan = await dispatch(findAllPeternakan());
@@ -93,6 +96,7 @@ function Map() {
         variant: "destructive",
       });
     }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -142,11 +146,16 @@ function Map() {
   }, [selectedCategory]);
 
   const handleBackClick = () => {
-    window.history.back();
+    router.push("/");
   };
 
   return (
     <main className={classes.mainStyle}>
+      {loading && (
+        <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-80 z-50">
+          <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
+        </div>
+      )}
       <MapGL
         ref={mapRef}
         mapboxAccessToken={mapboxToken}
