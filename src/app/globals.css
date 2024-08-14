@@ -78,3 +78,16 @@
 body::-webkit-scrollbar {
   display: none;
 }
+
+.article > p {
+  margin-bottom: 16px;
+}
+
+.article > ul {
+  margin-bottom: 16px;
+}
+
+.article li {
+  list-style-type: circle;
+  margin-left: 32px;
+}

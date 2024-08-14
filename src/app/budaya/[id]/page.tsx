@@ -68,7 +68,7 @@ const DetailBudaya = () => {
 
             <div
               dangerouslySetInnerHTML={{ __html: budayaData.content }}
-              className="text-justify indent-10 mt-5 lg:mt-10
+              className="article text-justify mt-5 lg:mt-10
               "
             ></div>
           </div>
