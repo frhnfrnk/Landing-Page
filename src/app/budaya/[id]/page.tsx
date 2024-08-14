@@ -61,14 +61,14 @@ const DetailBudaya = () => {
         <div className="font-poppins w-full lg:w-1/2 mx-auto -translate-y-0 lg:-translate-y-[50px] mt-10 lg:mt-0 px-5">
           <CarouselComponent img={budayaData.image} />
           <div className="lg:w-full flex flex-col justify-center items-center">
-            <h1 className="text-4xl font-bold mt-5 mb-3 text-center lg:text-left">
+            <h1 className="text-4xl font-bold mt-5 mb-3 text-center lg:text-center">
               {budayaData.name}
             </h1>
             <p className="text-xl">{budayaData.category}</p>
 
             <div
               dangerouslySetInnerHTML={{ __html: budayaData.content }}
-              className="text-justify  indent-10 mt-5 lg:mt-10
+              className="text-justify indent-10 mt-5 lg:mt-10
               "
             ></div>
           </div>
