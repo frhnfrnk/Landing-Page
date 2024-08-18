@@ -1,11 +1,11 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Login | Deepublish",
-  description: "Login to Deepublish to read your favorite books.",
+  title: "Register | Nirwana Nusa Penida",
+  description: "Only for Admins - Register to Nirwana Nusa Penida as Admin",
 };
 
-export default function LoginLayout({
+export default function RegisterLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

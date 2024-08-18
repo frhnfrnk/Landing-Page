@@ -174,7 +174,7 @@ export default function TabDesa() {
                   key={index}
                   className="w-full flex items-center justify-center"
                 >
-                  <DataCard data={data} pageNow={pageNow} index={index} />
+                  <DataCard data={data} pageNow={pageNow} index={index} click={dropdownOpen} />
                 </div>
               ))
             ) : (

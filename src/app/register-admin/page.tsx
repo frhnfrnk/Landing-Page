@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import LoginForm from "@/components/Form/LoginForm";
 import Link from "next/link";
+import SignUpForm from "@/components/Form/SignUpForm";
 
 const LoginPage: React.FC = () => {
   useEffect(() => {
@@ -19,17 +20,17 @@ const LoginPage: React.FC = () => {
     <main className="w-screen h-screen flex justify-center items-center">
       <div className="flex gap-5 flex-col w-[320px]">
         <div>
-          <h1 className="text-2xl text-center font-semibold">
+          <h1 className="font-sirukota text-2xl text-center font-semibold">
             Nirwana Nusapenida
           </h1>
-          <p className="text-center">Welcome back! Please Sign In as Admin</p>
+          <p className="text-center">Welcome! Please Sign Uo as Admin</p>
         </div>
         <div className="border-[1px] border-gray-100 rounded-lg shadow-xl">
-          <LoginForm>
-            <Link href={"/signup"} className="font-semibold">
-              Sign Up
+          <SignUpForm>
+            <Link href={"/login-admin"} className="font-semibold">
+              Login
             </Link>
-          </LoginForm>
+          </SignUpForm>
         </div>
       </div>
     </main>

@@ -1,9 +1,9 @@
-import { User } from "@/utils/types/user";
+import { LoginUser, RegisterUser, User } from "@/utils/types/user";
 import axios from "axios";
 
 const LOCAL_API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-const login = async (userData: User) => {
+const login = async (userData: LoginUser) => {
   const response = await axios.post(`${LOCAL_API_URL}/auth/login`, userData, {
     headers: {
       "Content-Type": "application/json",
@@ -21,7 +21,7 @@ const login = async (userData: User) => {
   return response.data;
 };
 
-const signup = async (userData: User) => {
+const signup = async (userData: RegisterUser) => {
   const response = await axios.post(LOCAL_API_URL + "/auth/signup", userData, {
     headers: {
       "content-type": "application/json",

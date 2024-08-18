@@ -15,7 +15,7 @@ export default function CreatorLayout({
 
   useEffect(() => {
     if (user === null) {
-      router.push("/logintoadmin");
+      router.push("/login-admin");
     }
   }, [user]);
 

@@ -1,4 +1,4 @@
-import { User } from "@/utils/types/user";
+import { LoginUser, RegisterUser, User } from "@/utils/types/user";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import authService from "./authService";
@@ -17,7 +17,7 @@ const initialState: IAuthState = {
 
 export const login = createAsyncThunk(
   "auth/login",
-  async (user: User, thunkAPI) => {
+  async (user: LoginUser, thunkAPI) => {
     try {
       const payload = await authService.login(user);
       return payload;
@@ -30,7 +30,7 @@ export const login = createAsyncThunk(
 
 export const signup = createAsyncThunk(
   "auth/signup",
-  async (user: User, thunkAPI) => {
+  async (user: RegisterUser, thunkAPI) => {
     try {
       const payload = await authService.signup(user);
       return payload;
